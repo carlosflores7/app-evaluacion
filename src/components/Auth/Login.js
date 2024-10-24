@@ -28,7 +28,6 @@ function Login() {
   return (
     <div className="flex align-items-center justify-content-center">
       <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
-        {/* <Card title="Iniciar Sesión"> */}
         <div className="text-center mb-5">
           <img
             src="/images/logoapp.png"
@@ -46,43 +45,51 @@ function Login() {
             Crear una
           </a>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="p-field">
-            <label
-              htmlFor="username"
-              className="block text-900 font-medium mb-2"
-            >
-              Usuario
-            </label>
-            <InputText
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="w-full mb-3"
-            />
-          </div>
-          <div className="p-field">
-            <label htmlFor="password">Contraseña</label>
-            <InputText
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full mb-3"
-            />
-          </div>
-          <div className="flex align-items-center justify-content-between mb-6">
-            <div className="flex align-items-center">
-              <label htmlFor="rememberme">Remember me</label>
+        <div className="text-center mb-5">
+          <form onSubmit={handleSubmit}>
+            <div className="p-field">
+              <label
+                htmlFor="username"
+                className="block text-900 font-medium mb-2"
+              >
+                Usuario
+              </label>
+              <InputText
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                className="w-6 mb-3"
+              />
             </div>
-            <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">
-              Recuperar contraseña
-            </a>
-          </div>
-          <Button label="Entrar" icon="pi pi-user" className="w-full" />
-        </form>
+            <div className="p-field">
+              <label
+                htmlFor="password"
+                className="block text-900 font-medium mb-2"
+              >
+                Contraseña
+              </label>
+              <InputText
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-6 mb-3"
+              />
+            </div>
+            <div className="flex align-items-right justify-content-center mb-6">
+              <a
+                href="#"
+                className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
+              >
+                Recuperar contraseña
+              </a>
+            </div>
+            <Button label="Entrar" className="w-6" />{" "}
+            {/* Cambiado el ancho del botón */}
+          </form>
+        </div>
         {message && (
           <Message
             severity={
@@ -91,7 +98,6 @@ function Login() {
             text={message}
           />
         )}
-        {/* </Card> */}
       </div>
     </div>
   );

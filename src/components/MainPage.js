@@ -1,25 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Container, Grid, Box } from '@mui/material';
-import Navbar from './Navbar';
+// MainPage.js
+import React from "react";
+import Navbar from "./Navbar";
+import ContentView from "./ContentView";
+import "primeflex/primeflex.css";
 
 function MainPage() {
   return (
-    <div className="main-page-container">
-
+    <div className="p-grid">
       <Navbar />
-      {/* Contenido principal */}
-      <Container>
-        <Box sx={{ mt: 5 }}>
-          <Grid container justifyContent="center">
-            <Grid item>
-              <Typography variant="h3" component="h1" align="center">
-                Bienvenido a la Plataforma
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
+      <ContentView />
     </div>
   );
 }

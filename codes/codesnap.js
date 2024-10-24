@@ -1,28 +1,78 @@
-import React from "react";
-import Navbar from "../../Navbar";
-import { Card } from "primereact/card";
+import React, { useState } from "react";
+import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
 import { Button } from "primereact/button";
-import { useNavigate } from "react-router-dom";
 
-function TeacherDashboard() {
-  const navigate = useNavigate();
+const LoginForm = () => {
+  const [schoolName, setSchoolName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    // Aquí puedes manejar el evento de login
+    console.log("Login:", { schoolName, password });
+  };
 
   return (
-    <div className="teacher-dashboard">
-      <Navbar />
-      <Card title="Panel del Docente">
+    <div
+      className="login-form-container"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <div
+        className="login-form"
+        style={{
+          width: "300px",
+          textAlign: "center",
+          backgroundColor: "#fff",
+          padding: "2rem",
+          borderRadius: "8px",
+          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <h2>Welcome, Log into your account</h2>
+        <p>It is our great pleasure to have you on board!</p>
+
+        <div className="p-field" style={{ marginBottom: "1rem" }}>
+          <span className="p-float-label">
+            <InputText
+              id="school"
+              value={schoolName}
+              onChange={(e) => setSchoolName(e.target.value)}
+            />
+            <label htmlFor="school">Enter the name of school</label>
+          </span>
+        </div>
+
+        <div className="p-field" style={{ marginBottom: "1rem" }}>
+          <span className="p-float-label">
+            <Password
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              toggleMask
+              feedback={false}
+            />
+            <label htmlFor="password">Enter Password</label>
+          </span>
+        </div>
+
         <Button
-          label="Crear Evaluación"
-          onClick={() => navigate("/teacher-dashboard/create-evaluation")}
+          label="Login"
+          className="p-button-primary"
+          onClick={handleLogin}
+          style={{ width: "100%" }}
         />
-        <Button
-          label="Ver Reportes"
-          onClick={() => navigate("/teacher-dashboard/view-reports")}
-          className="p-button-secondary"
-        />
-      </Card>
+
+        <p style={{ marginTop: "1rem" }}>
+          Already have an account? <a href="/signup">Sign up</a>
+        </p>
+      </div>
     </div>
   );
-}
+};
 
-export default TeacherDashboard;
+export default LoginForm;

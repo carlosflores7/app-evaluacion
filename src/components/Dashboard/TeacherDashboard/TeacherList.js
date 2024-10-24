@@ -4,29 +4,29 @@ import "primereact/resources/themes/saga-blue/theme.css"; // Tema de PrimeReact
 import "primereact/resources/primereact.min.css"; // Estilos principales de PrimeReact
 import "primeicons/primeicons.css"; // Íconos de PrimeReact
 
-const evaluations = [
-  { id: 1, name: "Evaluación Matemáticas" },
-  { id: 2, name: "Evaluación Historia" },
-  { id: 3, name: "Evaluación Física" },
+const teachers = [
+  { id: 1, name: "Profesor Martínez" },
+  { id: 2, name: "Profesora Sánchez" },
+  { id: 3, name: "Profesor Díaz" },
 ];
 
-function EvaluationList() {
+function TeacherList() {
   return (
     <div className="p-col-4">
       <div className="card">
         <ListBox
-          options={evaluations}
+          options={teachers}
           optionLabel="name"
-          itemTemplate={(evaluation) => (
+          itemTemplate={(teacher) => (
             <div>
-              <span>{evaluation.name}</span>
+              <span>{teacher.name}</span>
             </div>
           )}
-          style={{ width: "30%" }} // Ajusta al 100% del contenedor
+          style={{ width: "30%" }} //
         />
       </div>
     </div>
   );
 }
 
-export default EvaluationList;
+export default TeacherList;
