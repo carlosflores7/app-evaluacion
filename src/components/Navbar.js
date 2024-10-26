@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Menubar } from "primereact/menubar";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "primereact/button";
+import { AuthContext } from "../contexts/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation(); // Obtener la ruta actual
+  const location = useLocation();
+  const { logout } = useContext(AuthContext);
 
-  // Función para verificar si un ítem es activo
   const isActive = (path) => location.pathname === path;
 
-  // Opciones del menú
   const items = [
     {
       label: "Inicio",
       icon: "pi pi-home",
       command: () => navigate("/main"),
-      className: isActive("/main") ? "p-highlight" : "", // Aplicar clase activa de PrimeReact
+      className: isActive("/main") ? "p-highlight" : "",
     },
     {
       label: "Panel Docente",
@@ -50,13 +50,15 @@ function Navbar() {
     },
   ];
 
-  // Definir el botón de cerrar sesión
   const end = (
     <Button
       icon="pi pi-sign-out"
       label="Salir"
       className="p-button-danger"
-      onClick={() => navigate("/")}
+      onClick={() => {
+        logout();
+        navigate("/");
+      }}
     />
   );
 

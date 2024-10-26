@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../services/api";
-import Navbar from "../../Navbar"; // Importamos Navbar
-import { DataTable } from "primereact/datatable"; // DataTable de PrimeReact
-import { Column } from "primereact/column"; // Columnas para la tabla
-import { Card } from "primereact/card"; // Card para encapsular el contenido
+import Navbar from "../../Navbar";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { Card } from "primereact/card";
 
 function ViewFeedback() {
   const [feedback, setFeedback] = useState([]);
@@ -11,7 +11,7 @@ function ViewFeedback() {
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await api.get("/evaluations"); // Asumiendo que las evaluaciones tienen feedback
+        const response = await api.get("/evaluations");
         setFeedback(response.data);
       } catch (error) {
         console.error(error);
@@ -25,8 +25,6 @@ function ViewFeedback() {
   return (
     <div>
       <Navbar />
-
-      {/* Card para encapsular el contenido */}
       <Card title="Retroalimentación de Evaluaciones">
         {feedback.length === 0 ? (
           <p>No hay retroalimentación disponible.</p>

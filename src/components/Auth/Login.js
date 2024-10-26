@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import api from "../../services/api"; // Importamos la instancia de Axios para llamadas a la API
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
@@ -15,7 +16,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const userData = { username };
+      const response = await api.post("/auth/login", { username, password });
+      const userData = response.data.user;
       login(userData);
       setMessage("Inicio de sesión exitoso");
       navigate("/main");
@@ -30,8 +32,8 @@ function Login() {
       <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
         <div className="text-center mb-5">
           <img
-            src="/images/logoapp.png"
-            alt="hyper"
+            src="/public/images/logoapp.png"
+            alt="logo"
             height={100}
             className="mb-3"
           />
@@ -78,16 +80,7 @@ function Login() {
                 className="w-6 mb-3"
               />
             </div>
-            <div className="flex align-items-right justify-content-center mb-6">
-              <a
-                href="#"
-                className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
-              >
-                Recuperar contraseña
-              </a>
-            </div>
-            <Button label="Entrar" className="w-6" />{" "}
-            {/* Cambiado el ancho del botón */}
+            <Button label="Entrar" className="w-6" />
           </form>
         </div>
         {message && (

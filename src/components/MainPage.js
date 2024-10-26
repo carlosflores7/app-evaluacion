@@ -1,14 +1,14 @@
 // MainPage.js
 import React from "react";
 import Navbar from "./Navbar";
-import ContentView from "./ContentView";
+import MainContent from "./MainContent";
 import "primeflex/primeflex.css";
 
 function MainPage() {
   return (
     <div className="p-grid">
       <Navbar />
-      <ContentView />
+      <MainContent />
     </div>
   );
 }

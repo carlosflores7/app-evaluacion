@@ -1,6 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
-// Crear el contexto de autenticación
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
@@ -8,10 +7,15 @@ function AuthProvider({ children }) {
 
   const login = (userData) => {
     setUser(userData);
+    // Opcional: almacenar token si se recibe en el inicio de sesión
+    if (userData.token) {
+      localStorage.setItem("token", userData.token);
+    }
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("token");
   };
 
   return (

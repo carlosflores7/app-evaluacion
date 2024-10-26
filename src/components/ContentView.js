@@ -2,31 +2,26 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import MainContent from "./MainContent";
-import StudentDashboardContent from "./Dashboard/StudentDashboard/StudentDashboardContent";
-import TeacherDashboardContent from "./Dashboard/TeacherDashboard/TeacherDashboardContent";
+import StudentDashboard from "./Dashboard/StudentDashboard/StudentDashboard";
+import TeacherDashboard from "./Dashboard/TeacherDashboard/TeacherDashboard";
 
 function ContentView() {
-  const location = useLocation(); // Detectar la ruta actual
+  const location = useLocation();
 
-  // Determinar qué componente cargar basándose en la ruta
   const renderContent = () => {
     switch (location.pathname) {
       case "/main":
         return <MainContent />;
       case "/student-dashboard":
-        return <StudentDashboardContent />;
+        return <StudentDashboard />;
       case "/teacher-dashboard":
-        return <TeacherDashboardContent />;
+        return <TeacherDashboard />;
       default:
         return <p>No se ha encontrado la página solicitada.</p>;
     }
   };
 
-  return (
-    <div>
-      {renderContent()} {/* Renderizar el contenido basado en la ruta */}
-    </div>
-  );
+  return <div>{renderContent()}</div>;
 }
 
 export default ContentView;
