@@ -2,7 +2,8 @@ import axios from "axios";
 
 const api = axios.create({
   // baseURL: "http://localhost:5001/api",
-  baseURL: "https://api-vercel-eiahyil9k-jorge-edgar-rojas-projects.vercel.app",
+  baseURL:
+    "https://api-evaluacion2-40p6jursv-jorge-edgar-rojas-projects.vercel.app",
 });
 
 export default api;
