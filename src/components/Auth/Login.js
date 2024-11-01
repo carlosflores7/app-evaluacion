@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import api from "../../services/api"; // Importamos la instancia de Axios para llamadas a la API
+import api from "../../services/api";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Message } from "primereact/message";
@@ -16,14 +16,26 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/auth/login", { username, password });
-      const userData = response.data.user;
-      login(userData);
-      setMessage("Inicio de sesión exitoso");
-      navigate("/main");
+      const response = await api.get("/usuarios/autenticar", {
+        auth: {
+          username: username,
+          password: password,
+        },
+      });
+
+      if (response.data.estatus === "OK") {
+        const userData = response.data.usuario;
+        localStorage.setItem("token", response.data.token);
+        login(userData);
+        setMessage("Inicio de sesión exitoso");
+        navigate("/main");
+      } else {
+        setMessage("Credenciales incorrectas");
+      }
     } catch (error) {
-      console.error(error);
-      setMessage("Credenciales incorrectas");
+      console.error("Error completo:", error);
+      console.error("Detalle del error:", error.response?.data || error.message);
+      setMessage("Error en la autenticación");
     }
   };
 
@@ -38,7 +50,7 @@ function Login() {
             className="mb-3"
           />
           <div className="text-900 text-3xl font-medium mb-3">
-            Bienvenido a EvaluAPP
+            Bienvenido a Sistema de Gestión Escolar
           </div>
           <span className="text-600 font-medium line-height-3">
             ¿No tiene cuenta?
