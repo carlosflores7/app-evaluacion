@@ -24,30 +24,6 @@ function Navbar() {
       command: () => navigate("/teacher-dashboard"),
       className: isActive("/teacher-dashboard") ? "p-highlight" : "",
     },
-    {
-      label: "Panel Estudiante",
-      icon: "pi pi-user",
-      command: () => navigate("/student-dashboard"),
-      className: isActive("/student-dashboard") ? "p-highlight" : "",
-    },
-    {
-      label: "Evaluaciones",
-      icon: "pi pi-list",
-      command: () => navigate("/evaluations"),
-      className: isActive("/evaluations") ? "p-highlight" : "",
-    },
-    {
-      label: "Reportes",
-      icon: "pi pi-chart-bar",
-      command: () => navigate("/reports"),
-      className: isActive("/reports") ? "p-highlight" : "",
-    },
-    {
-      label: "Perfil",
-      icon: "pi pi-id-card",
-      command: () => navigate("/profile"),
-      className: isActive("/profile") ? "p-highlight" : "",
-    },
   ];
 
   const end = (

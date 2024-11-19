@@ -11,7 +11,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext); // Acceder a la función login del AuthContext
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,16 +25,15 @@ function Login() {
 
       if (response.data.estatus === "OK") {
         const userData = response.data.usuario;
-        localStorage.setItem("token", response.data.token);
-        login(userData);
+        localStorage.setItem("token", response.data.token); // Guardar el token en el localStorage
+        login(userData); // Guardar los datos del usuario en el contexto
         setMessage("Inicio de sesión exitoso");
-        navigate("/main");
+        navigate("/main"); // Redirigir al dashboard o página principal
       } else {
         setMessage("Credenciales incorrectas");
       }
     } catch (error) {
       console.error("Error completo:", error);
-      console.error("Detalle del error:", error.response?.data || error.message);
       setMessage("Error en la autenticación");
     }
   };
@@ -42,22 +41,10 @@ function Login() {
   return (
     <div className="flex align-items-center justify-content-center">
       <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
-        <div className="text-center mb-5">
-          <img
-            src="/public/images/logoapp.png"
-            alt="logo"
-            height={100}
-            className="mb-3"
-          />
+        <div className="text-center mb-5">     
           <div className="text-900 text-3xl font-medium mb-3">
             Bienvenido a Sistema de Gestión Escolar
           </div>
-          <span className="text-600 font-medium line-height-3">
-            ¿No tiene cuenta?
-          </span>
-          <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">
-            Crear una
-          </a>
         </div>
         <div className="text-center mb-5">
           <form onSubmit={handleSubmit}>

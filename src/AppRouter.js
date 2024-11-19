@@ -1,13 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import TeacherDashboard from "./components/Dashboard/TeacherDashboard/TeacherDashboard";
-import StudentDashboard from "./components/Dashboard/StudentDashboard/StudentDashboard";
+import Opciones from "./components/Dashboard/TeacherDashboard/Opciones";
+import CalificacionesCurso from "./components/Dashboard/TeacherDashboard/CalificacionesCurso";
 import MainPage from "./components/MainPage";
-import Evaluation from "./components/Evaluation/Evaluation";
-import Report from "./components/Report/Report";
-import CreateEvaluation from "./components/Dashboard/TeacherDashboard/CreateEvaluation";
-import ViewReports from "./components/Dashboard/TeacherDashboard/ViewReports";
-import ViewFeedback from "./components/Dashboard/StudentDashboard/ViewFeedback";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -33,55 +29,22 @@ function AppRouter() {
           }
         />
         <Route
-          path="/teacher-dashboard/create-evaluation"
-          element={
-            <ProtectedRoute>
-              <CreateEvaluation />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/teacher-dashboard/view-reports"
-          element={
-            <ProtectedRoute>
-              <ViewReports />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student-dashboard"
-          element={
-            <ProtectedRoute>
-              <StudentDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student-dashboard/view-feedback"
-          element={
-            <ProtectedRoute>
-              <ViewFeedback />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/evaluations"
-          element={
-            <ProtectedRoute>
-              <Evaluation />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/reports"
-          element={
-            <ProtectedRoute>
-              <Report />
-            </ProtectedRoute>
-          }
-        />
+  path="/teacher-dashboard/opciones/:id" 
+  element={
+
+      <Opciones />
+    
+  }
+/>
+<Route
+  path="/teacher-dashboard/calificaciones/PorCurso"
+  element={<CalificacionesCurso />}
+/>
+
+
       </Routes>
     </Router>
+    
   );
 }
 
