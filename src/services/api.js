@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000",
-  //baseURL: "https://fast-api-six-roan.vercel.app", // Nueva dirección base
+  //baseURL: "http://localhost:8000",
+  baseURL: "https://fast-api-six-roan.vercel.app", // Nueva dirección base
 });
 
 // Interceptor para incluir el token en las cabeceras de cada solicitud
